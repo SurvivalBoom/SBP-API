@@ -13,7 +13,7 @@
     }
   ],
   "paths": {
-    "/auth/login": {
+    "/api/auth/login": {
       "post": {
         "summary": "Логин пользователя",
         "requestBody": {
@@ -47,7 +47,7 @@
         "tags": ["auth"]
       }
     },
-    "/auth/logout": {
+    "/api/auth/logout": {
       "post": {
         "summary": "Выход пользователя",
         "responses": {
@@ -65,7 +65,7 @@
         "tags": ["auth"]
       }
     },
-    "/post/": {
+    "/api/post/": {
       "get": {
         "summary": "Получить все посты",
         "responses": {
@@ -117,7 +117,7 @@
         ]
       }
     },
-    "/post/{id}": {
+    "/api/post/{id}": {
       "get": {
         "summary": "Получить пост по ID",
         "parameters": [
@@ -225,7 +225,7 @@
         ]
       }
     },
-    "/post/{id}/like": {
+    "/api/post/{id}/like": {
       "post": {
         "summary": "Лайкнуть или убрать лайк с поста",
         "parameters": [
@@ -251,7 +251,7 @@
         ]
       }
     },
-    "/post/{id}/dislike": {
+    "/api/post/{id}/dislike": {
       "post": {
         "summary": "Дизлайкнуть или убрать дизлайк",
         "parameters": [
@@ -277,7 +277,7 @@
         ]
       }
     },
-    "/post/author/{username}": {
+    "/api/post/author/{username}": {
       "get": {
         "summary": "Получить посты пользователя",
         "parameters": [
@@ -308,7 +308,7 @@
         "tags": ["post"]
       }
     },
-    "/user/me": {
+    "/api/user/me": {
       "get": {
         "summary": "Получить текущего пользователя",
         "responses": {
@@ -331,7 +331,7 @@
         ]
       }
     },
-    "/user/": {
+    "/api/user/": {
       "get": {
         "summary": "Получить список всех пользователей",
         "responses": {
@@ -352,7 +352,7 @@
         "tags": ["user"]
       }
     },
-    "/user/{username}": {
+    "/api/user/{username}": {
       "get": {
         "summary": "Получить пользователя по username",
         "parameters": [
@@ -368,126 +368,4 @@
         "responses": {
           "200": {
             "description": "Найден пользователь",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserEntity"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Не найден"
-          }
-        },
-        "tags": ["user"]
-      }
-    }
-  },
-  "components": {
-    "schemas": {
-      "LoginRequest": {
-        "type": "object",
-        "properties": {
-          "username": {
-            "type": "string"
-          },
-          "password": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "username",
-          "password"
-        ]
-      },
-      "PostRequest": {
-        "type": "object",
-        "properties": {
-          "content": {
-            "type": "string"
-          },
-          "image": {
-            "type": "string"
-          }
-        }
-      },
-      "ApiResponse": {
-        "type": "object",
-        "properties": {
-          "message": {
-            "type": "string"
-          }
-        }
-      },
-      "UserEntity": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "username": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          }
-        }
-      },
-      "PostEntity": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "text": {
-            "type": "string"
-          },
-          "image": {
-            "type": "string"
-          },
-          "author": {
-            "$ref": "#/components/schemas/UserEntity"
-          }
-        }
-      },
-      "PostDTO": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "text": {
-            "type": "string"
-          },
-          "image": {
-            "type": "string"
-          },
-          "likedByUser": {
-            "type": "boolean"
-          },
-          "dislikedByUser": {
-            "type": "boolean"
-          },
-          "likesCount": {
-            "type": "integer"
-          },
-          "dislikesCount": {
-            "type": "integer"
-          },
-          "authorUsername": {
-            "type": "string"
-          }
-        }
-      },
-      "sessionCookie": {
-        "type": "object",
-        "properties": {
-          "JSESSIONID": {
-            "type": "string"
-          }
-        }
-      }
-    }
-  }
-}
+            "
