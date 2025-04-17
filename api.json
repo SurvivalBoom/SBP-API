@@ -368,4 +368,126 @@
         "responses": {
           "200": {
             "description": "Найден пользователь",
-            "
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserEntity"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Не найден"
+          }
+        },
+        "tags": ["user"]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "LoginRequest": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "username",
+          "password"
+        ]
+      },
+      "PostRequest": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "UserEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          }
+        }
+      },
+      "PostEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "text": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "author": {
+            "$ref": "#/components/schemas/UserEntity"
+          }
+        }
+      },
+      "PostDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "text": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "likedByUser": {
+            "type": "boolean"
+          },
+          "dislikedByUser": {
+            "type": "boolean"
+          },
+          "likesCount": {
+            "type": "integer"
+          },
+          "dislikesCount": {
+            "type": "integer"
+          },
+          "authorUsername": {
+            "type": "string"
+          }
+        }
+      },
+      "sessionCookie": {
+        "type": "object",
+        "properties": {
+          "JSESSIONID": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
