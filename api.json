@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "SurvivalBoomPrivate",
-    "version": "1.0.0",
+    "version": "1.0.0"
   },
   "servers": [
     {
@@ -43,7 +43,8 @@
           "401": {
             "description": "Неавторизован"
           }
-        }
+        },
+        "tags": ["auth"]
       }
     },
     "/auth/logout": {
@@ -60,7 +61,8 @@
               }
             }
           }
-        }
+        },
+        "tags": ["auth"]
       }
     },
     "/post/": {
@@ -80,7 +82,8 @@
               }
             }
           }
-        }
+        },
+        "tags": ["post"]
       },
       "post": {
         "summary": "Создать пост",
@@ -105,7 +108,13 @@
               }
             }
           }
-        }
+        },
+        "tags": ["post"],
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ]
       }
     },
     "/post/{id}": {
@@ -135,7 +144,8 @@
           "404": {
             "description": "Пост не найден"
           }
-        }
+        },
+        "tags": ["post"]
       },
       "put": {
         "summary": "Обновить пост",
@@ -176,7 +186,13 @@
           "404": {
             "description": "Пост не найден"
           }
-        }
+        },
+        "tags": ["post"],
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ]
       },
       "delete": {
         "summary": "Удалить пост",
@@ -200,7 +216,13 @@
           "404": {
             "description": "Пост не найден"
           }
-        }
+        },
+        "tags": ["post"],
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ]
       }
     },
     "/post/{id}/like": {
@@ -220,7 +242,13 @@
           "200": {
             "description": "Статус лайка"
           }
-        }
+        },
+        "tags": ["post"],
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ]
       }
     },
     "/post/{id}/dislike": {
@@ -240,7 +268,13 @@
           "200": {
             "description": "Статус дизлайка"
           }
-        }
+        },
+        "tags": ["post"],
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ]
       }
     },
     "/post/author/{username}": {
@@ -270,7 +304,8 @@
               }
             }
           }
-        }
+        },
+        "tags": ["post"]
       }
     },
     "/user/me": {
@@ -287,7 +322,13 @@
               }
             }
           }
-        }
+        },
+        "tags": ["user"],
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ]
       }
     },
     "/user/": {
@@ -307,7 +348,8 @@
               }
             }
           }
-        }
+        },
+        "tags": ["user"]
       }
     },
     "/user/{username}": {
@@ -337,7 +379,8 @@
           "404": {
             "description": "Не найден"
           }
-        }
+        },
+        "tags": ["user"]
       }
     }
   },
@@ -433,6 +476,14 @@
             "type": "integer"
           },
           "authorUsername": {
+            "type": "string"
+          }
+        }
+      },
+      "sessionCookie": {
+        "type": "object",
+        "properties": {
+          "JSESSIONID": {
             "type": "string"
           }
         }
